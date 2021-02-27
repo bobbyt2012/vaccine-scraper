@@ -15,10 +15,10 @@ def mt_carmel(link, vaccine):
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
     #Location, Facility, Phone URL
-    facility = page_content.find_all('li', {'class', 'facility'})[0].get_text().strip()
-    address = page_content.find_all('li', {'class', 'location'})[0].get_text().replace('•','')
+    facility = page_content.find('li', {'class', 'facility'}).get_text().strip()
+    address = page_content.find('li', {'class', 'location'}).get_text().replace('•','')
     address = ' '.join(address.split())
-    phone = page_content.find_all('li', {'class', 'phone'})[0].get_text()
+    phone = page_content.find('li', {'class', 'phone'}).get_text()
 
     a_tags = page_content.find_all('a', {'class', 'button secondary'})
 
